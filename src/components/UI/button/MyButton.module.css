@@ -1,0 +1,14 @@
+vars{
+    --brown:#492519;
+    --d-brown:#291511;
+    --l-brown:#be7b49;
+  }
+
+.myBtn{
+    padding: 5px;
+    color: #be7b49;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid #be7b49;
+    cursor: pointer;
+}
