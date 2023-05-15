@@ -1,8 +1,4 @@
 import React, { useState,useRef, useMemo, useEffect } from 'react';
-//import ClassCounter from './components/ClassCounter';
-//import MySelect from './components/UI/select/MySelect';
-//import PostItem from './components/PostItem';
-//import MyInput from './components/UI/input/MyInput';
 import './styles/App.css';
 import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton';
@@ -10,10 +6,10 @@ import PostForm from './components/PostForm';
 import {usePosts} from './hooks/usePosts';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/MyModal/MyModal';
-import axios from 'axios';
 import PostService from './API/PostService';
 import Loader from './components/UI/Loader/Loader';
 import { useFetching } from './hooks/useFetching';
+import Calculator from './components/Calculator';
 
 
 function App() {
@@ -26,6 +22,7 @@ function App() {
       const posts = await PostService.getAll();
       setPosts(posts);
     })
+    const [inp, setInp] = useState({val:''})
 
     useEffect(()=>{
       fetchPosts()
@@ -40,9 +37,12 @@ function App() {
         setPosts(posts.filter(p => p.id !== post.id))
     }
 
-
   return (
     <div className="App">
+    <Calculator
+      inp = {inp}
+      setInp = {setInp}
+    />
     <MyButton style={{marginTop: '30px'}} onClick={()=> setModal(true)}>
       Create Post
     </MyButton>
